@@ -1,0 +1,129 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sandqs;
+
+/**
+ *
+ * @author Madhu M P
+ */
+import java.util.*;
+import java.io.*;
+class Stack
+{
+    int [] stack=new int[100];
+   
+    int top=-1;
+   
+    void push()
+    {
+        if(top==100)
+            System.out.println("Stack over flow");
+        else
+        {
+            
+            Random random=new Random();
+            int element = random.nextInt(50);
+            System.out.println("pushing element is:"+element);
+            stack[++top]=element;
+        }
+    }
+    void pop()
+    {
+        if(top==-1)
+           System.out.println("Stack under flow");
+        else
+        {
+            System.out.println("Poped element is:"+stack[top--]);
+        }
+    }
+    void display()
+    {
+        if(top==-1)
+            System.out.println("Stack empty:");
+        for(int i=top;i>=0;i--)
+            System.out.println(stack[i]);
+    }
+}
+class Queue
+{
+     int [] q=new int[100];
+     int rear=-1,front=0;
+     void insert()
+     {
+        if(rear==100) 
+            System.out.println("Queue is full");
+        else
+        {
+             Random random=new Random();
+            int element = random.nextInt(50);
+            System.out.println("pushing element is:"+element);
+            q[++rear]=element;
+        }
+     }
+     void delete()
+     {
+         if(front>rear)
+             System.out.println("Queue is empty");
+         else
+         {
+              System.out.println("Deleted element is:"+q[front]);
+              front--;
+         }
+     }
+     void display()
+    {
+        if(rear<front)
+            System.out.println("Queue is  empty");
+        for(int i=front;i<=rear;i++)
+            System.out.println(q[i]);
+    }
+}
+public class SandQs {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner read=new Scanner(System.in);
+        Stack obj=new Stack();
+        Queue queue=new Queue();
+        boolean f=true;
+        for(;f;)
+        {
+             System.out.println("Stack operations");
+            System.out.println("1->PUSH\n2->POP\n3->DISPLAY\n4->EXIT\nEnter your choice:");
+            int choice=read.nextInt();
+            switch(choice)
+            {
+                case 1:obj.push();
+                       break;
+                case 2:obj.pop();
+                       break;
+                case 3:obj.display();
+                       break;
+                default :f=!f;
+            }
+        }
+        for(;;)
+        {
+           System.out.println("Queue operations");
+            System.out.println("1->INSERT\n2->DELETE\n3->DISPLAY\n4->EXIT\nEnter your choice:");
+            int choice=read.nextInt();
+            switch(choice)
+           {
+                case 1:queue.insert();
+                       break;
+                case 2:queue.delete();
+                       break;
+                case 3:queue.display();
+                       break;
+                default :System.exit(0);
+            }
+        }
+    }
+    
+}
