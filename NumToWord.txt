@@ -1,0 +1,99 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package numtoword;
+
+/**
+ *
+ * @author Madhu M P
+ */
+import java.util.Scanner;
+
+class Convert
+{
+   static  String []lessthan20={"zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
+   static String []lessthan100={"","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
+   static String []lessthan1000={"","one hundered","two hundered","three hundered","four hundered","five hundered","six hundered","seven hundered","eight hundered","nine hundered"};
+   static String []lessthan10000={"","one thousand","two thousand","three thousand","four thousand","five thousand","six thousand","seven thousand","eight thousand","nine thousand","ten thousand","eleven thousand","twelve thousand","thirteen thousand","fourteen thousand","fifteen thousand","sixteen thousand","seventeen thousand","eighteen thousand","ninteen thousand"};
+   static String []lessthan100000={"","","twenty ","thirty ","forty ","fifty ","sixty ","seventy ","eighty ","ninty "};
+   static String []lessthan1000000={"","one lakh","two lakh","three lakh","four lakh","five lakh","six lakh","seven lakh","eight lakh","nine lakh"};
+   void lessthantwenty(int number)
+  {
+      if(number<20)
+      {
+          System.out.println(lessthan20[number]);
+      }
+      else
+          if(number<100)
+              {
+                  int n=number;
+                  number/=10;
+                  System.out.print(" "+lessthan100[number]);
+                  n%=10;
+                  lessthantwenty(n);
+              }
+          else
+              if(number<1000)
+              {
+                  int n=number;
+                  number/=100;
+                  System.out.print(" "+lessthan1000[number]);
+                  n%=100;
+                  lessthantwenty(n);
+              }
+              else
+                  if(number<20000)
+                  {
+                      int n=number;
+                      number/=1000;
+                      System.out.print(lessthan10000[number]);
+                      n%=1000;
+                      lessthantwenty(n);
+                  }
+                 else
+                      if(number<100000)
+                      {
+                          int n=number;
+                          number/=10000;
+                          System.out.print(" "+lessthan100000[number]);
+                          n%=10000;
+                          lessthantwenty(n);
+                      }
+                      else 
+                          if(number<1000000)
+                          {
+                              int n=number;
+                          number/=100000;
+                          System.out.print(" "+lessthan1000000[number]);
+                          n%=100000;
+                          lessthantwenty(n);
+                          }
+  }
+}
+public class NumToWord {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int flag=1;
+        for(;flag==1;)
+        {
+            System.out.println("Enter the number less than 1000000/ten lakh");
+            int number=sc.nextInt();
+            Convert obj=new Convert();
+            obj.lessthantwenty(number);
+            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("If you want to convert again (1/0)");
+            int s=sc.nextInt();
+            if(s==1)
+                flag=1;
+            else
+                flag=0;
+        }
+    }
+    
+}
